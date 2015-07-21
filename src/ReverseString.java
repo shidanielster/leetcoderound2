@@ -1,8 +1,8 @@
 class ReverseString{
     public static void main(String... args){
         
-        System.out.println(reverse3("      a b cd  ").length());
-        System.out.println(reverse3(" ").length());
+        System.out.println(reverse2_1("      a b cd  ").length());
+        System.out.println(reverse2_1(" ").length());
 
     }
     
@@ -46,8 +46,8 @@ class ReverseString{
         StringBuilder sb = new StringBuilder();
         for(int i=str.length(),j=str.length()-1;j>=-1;j--){
             if(j==-1||str.charAt(j)==' '){
+                //copy (j,i)
                 if(j+1<str.length()&&str.charAt(j+1)!=' '){
-                    //copy (j,i)
                     if(sb.length()!=0){
                         sb.append(' ');
                     }
@@ -61,6 +61,34 @@ class ReverseString{
         return sb.toString();
     }
     
+    
+    /* solution 2-1
+     */
+     
+     public static String reverse2_1(String str){
+         StringBuilder sb = new StringBuilder();
+         for(int i=str.length(),j=str.length()-1;j>=-1;j--){
+             if(j==-1||str.charAt(j)==' '){
+                 //copy (j,i)
+                 copy(str,j,i,sb);
+                 i=j;
+             }
+         }
+         return sb.toString();
+     }
+     
+     private static void copy(String str,int s, int e, StringBuilder sb){
+         //this it to prevent multiple useless copy of continous spaces.
+         if(s+1==e)return;
+         if(sb.length()!=0){
+             sb.append(' ');
+         }
+         for(int x = s+1;x<e;x++){
+             if(str.charAt(x)!=' '){
+                 sb.append(str.charAt(x));
+             }
+         }
+     }
     
     /*
     * solution 3
