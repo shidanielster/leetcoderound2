@@ -5,7 +5,11 @@ class ThreeSum{
         System.out.println(new ThreeSum().threeSum(new int[]{0,0,0,0}));
     }
     
-    
+    /*
+     * Need to remove dup
+     * if x is not dup, y is not dup, then z is not dup
+     */
+     
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> lists = new ArrayList<List<Integer>>();
         Arrays.sort(nums);
