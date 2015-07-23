@@ -56,6 +56,7 @@ public class Zigzag {
                     sb.append(s.charAt(y-1));
                 }
                 x=y;
+                down = !down;
             }
         }
         return sb.toString();
