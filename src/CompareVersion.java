@@ -12,7 +12,7 @@ class CompareVersion{
             j=k;
             while(j<version2.length()&&version2.charAt(j)!='.')j++;
             int v2 = j==k?0:Integer.valueOf(version2.substring(k,j));
-            k=j
+            k=j;
             
             if(v1>v2)return 1;
             else if(v1<v2)return -1;
