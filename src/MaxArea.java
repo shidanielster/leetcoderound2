@@ -37,7 +37,7 @@ class MaxArea{
      * 
      */
      
-    public int maxArea(int[] height) {
+    public int maxArea2(int[] height) {
         int ret = 0;
         for(int i=0,j=height.length-1;i<j;){
             int area = -1;
