@@ -26,8 +26,30 @@ class MaxArea{
      * for each i, find a j which j>=i
      * then area[i] = (j-i)*heigth[i]
      */
+     
+    /*
+     * some improve to solution 2
+     * if we have compute (i,j)
+     * then 
+     * max in (i+1,j) if i<j
+     *        (i,j-1) if i>j
+     * max(i,j) = max( area(i+j), max(i+1,j),max(i,j-1)) 
+     * 
+     */
+     
     public int maxArea(int[] height) {
         int ret = 0;
+        for(int i=0,j=height.length-1;i<j;){
+            int area = -1;
+            if(height[i]>height[j]){
+                area = (j-i)*height[j];
+                j--;
+            }else{
+                area = (j-i)*height[i];
+                i++;
+            }
+            ret = ret>area?ret:area;
+        }
         return ret;
     }
 
