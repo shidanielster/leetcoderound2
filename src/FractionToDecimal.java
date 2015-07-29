@@ -9,44 +9,40 @@ class FractionToDecimal{
         System.out.println(new FractionToDecimal().fractionToDecimal(4,8));
         System.out.println(new FractionToDecimal().fractionToDecimal(30,1));
         System.out.println(new FractionToDecimal().fractionToDecimal(1000,234));
+        System.out.println(new FractionToDecimal().fractionToDecimal(-22,2));
+        System.out.println(new FractionToDecimal().fractionToDecimal(-22,-2));
         
     }
     
-    public String fractionToDecimal(int numerator, int denominator) {
-        Map<Integer,Integer> map = new HashMap<Integer,Integer>();
-        StringBuilder sb=new StringBuilder();
-        boolean start =false;
-        while(numerator!=0){
+public String fractionToDecimal(int numerator, int denominator) {
 
-            //handle repeat
-            if(map.containsKey(numerator)){
-                sb.insert(map.get(numerator),"(");
-                sb.append(')');
-                break;
-            }
-            if(start){
-                map.put(numerator,sb.length());
-            }
-            int r = numerator/denominator;
-            if(r==0){
-                if(start){
-                    sb.append("0");
-                }else{
-                //handle "."
-                    start = true;
-                    if(sb.length()==0){
-                        sb.append("0");
-                    }
-                    sb.append(".");
-                }
-            }else{
-                sb.append(r);
-                numerator-=r*denominator;
-            }
-            if(start)numerator *=10;
-        }
-        
-        if(sb.length()==0)return "0";
-        return sb.toString();
+    Map<Long,Integer> map = new HashMap<Long,Integer>();
+    StringBuilder sb=new StringBuilder();
+
+     if(numerator<0&&denominator>0||numerator>0&denominator<0){
+        sb.append("-");
+     }
+     long deno = Math.abs((long)denominator);
+     long num = Math.abs((long)numerator);
+     
+     sb.append(num/deno);
+     num=num%deno;
+     
+     if(num!=0){
+         sb.append(".");
+     }
+     while(num!=0){
+         num*=10;
+         if(map.containsKey(num)){
+             sb.insert(map.get(num),"(");
+             sb.append(')');
+             break;
+         }
+         map.put(num,sb.length());
+         sb.append(num/deno);
+         num=num%deno;
+     }
+    return sb.toString();
+
     }
 }
