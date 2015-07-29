@@ -21,7 +21,7 @@ class ValidParentheses {
     /*
      * version 2 is about 30% fast than version1 
      */
-    public boolean isValid(String s) {
+    public boolean isValid2(String s) {
         Stack<Character> stack = new Stack<Character>();
         Map<Character, Character> map =new HashMap<Character,Character>();
         Set<Character> set = new HashSet<Character>();

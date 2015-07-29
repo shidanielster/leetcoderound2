@@ -1,6 +1,4 @@
-class ListNode{
-    ListNode next;
-}
+
 
 class RemoveNthFromEnd{
     public ListNode removeNthFromEnd(ListNode head, int n) {
