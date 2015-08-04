@@ -12,9 +12,10 @@ class NextPermutation{
             }
         }
         if(x==nums.length-1){
-            return reverse(nums,0,nums.length-1);
-        }
-        for(int i=x+1;i<nums.length-;i++){
+            reverse(nums,0,nums.length-1);
+            
+        }else{
+        for(int i=x+1;i<nums.length-1;i++){
             if(nums[i]>nums[x]&&nums[i+1]<nums[x]){
                 y=i;
                 break;
@@ -25,12 +26,13 @@ class NextPermutation{
         nums[y]= t;
         
         reverse(nums,x+1,nums.length-1);
+        }
     }
     private void reverse(int[] n,int x, int y){
         while(x<y){
-            int t = nums[x];
-            nums[x]=nums[y];
-            nums[y]= t;
+            int t = n[x];
+            n[x]=n[y];
+            n[y]= t;
         } 
     }
 }
