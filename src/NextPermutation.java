@@ -1,4 +1,7 @@
 class NextPermutation{
+    /*
+     * This is a classic algorithm to use Lexicographic method to generate full array
+     */
     public void nextPermutation(int[] nums) {
         int x = nums.length-1;
         int y = nums.length -1;
@@ -15,17 +18,17 @@ class NextPermutation{
             reverse(nums,0,nums.length-1);
             
         }else{
-        for(int i=x+1;i<nums.length-1;i++){
-            if(nums[i]>nums[x]&&nums[i+1]<nums[x]){
-                y=i;
-                break;
+            for(int i=x+1;i<nums.length-1;i++){
+                if(nums[i]>nums[x]&&nums[i+1]<=nums[x]){
+                    y=i;
+                    break;
+                }
             }
-        }
-        int t = nums[x];
-        nums[x]=nums[y];
-        nums[y]= t;
+            int t = nums[x];
+            nums[x]=nums[y];
+            nums[y]= t;
         
-        reverse(nums,x+1,nums.length-1);
+            reverse(nums,x+1,nums.length-1);
         }
     }
     private void reverse(int[] n,int x, int y){
@@ -33,6 +36,7 @@ class NextPermutation{
             int t = n[x];
             n[x]=n[y];
             n[y]= t;
+            x++;y--;
         } 
     }
 }
