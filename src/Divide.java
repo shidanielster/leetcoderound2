@@ -7,7 +7,7 @@ public class Divide {
      * others will need to check corner cases
      */
     
-    public int divide(int d1, int d2) {
+   public int divide(int d1, int d2) {
         if(d1==(1<<31)){
             if(d2==-1){return divide(d1-d2,d2);}
             else{ return d2>0?divide(d1+d2,d2)-1: divide(d1-d2,d2)+1; }       
@@ -15,8 +15,7 @@ public class Divide {
         	return 0;
         }
         if((d1^d2)<0){
-            int x = divide(Math.abs(d1),Math.abs(d2));
-            return -x;
+            return -divide(Math.abs(d1),Math.abs(d2));
         }else if(d1<0){
         	return divide(Math.abs(d1),Math.abs(d2));
         }
@@ -29,9 +28,8 @@ public class Divide {
                 break;
             }
         }
-        int ret = 1<<x;
-        d1-=d2<<x;
-        for(int i=x-1;i>=0;i--){
+        int ret=0;
+        for(int i=x;i>=0;i--){
             if(d2<<i <=d1){
                 ret += 1<<i;
                 d1-=d2<<i;
