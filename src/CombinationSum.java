@@ -27,11 +27,6 @@ class CombinationSum{
         
         //with i
         List<List<Integer>> wlists =  helper(c,i,t-c[i]);
-
-        //t==0, which mean c[i]==target
-        if(wlists.size()==0){
-            return lists;
-        }
         
         for(List<Integer> wlist:wlists){
             List<Integer> list = new ArrayList<Integer>();
