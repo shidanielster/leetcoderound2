@@ -5,6 +5,12 @@ class Multiply {
     
     
     public String multiply(String num1, String num2) {
+        if(num1.length()<num2.length()){
+            return multiply(num2,num1);
+        }
+        if("0".equals(num2)){
+            return "0";
+        }
         String ret = "";
         for(int i=num2.length()-1;i>=0;i--){
             String m = mc(num1,num2.charAt(i));
