@@ -11,7 +11,7 @@ class JumpGame{
             int step = 1;
             while(step<=nums[i]&&i+step<nums.length){
                 int j=i+step;
-                if(nums[j]+j<=i+nums[i])skip[j]=true
+                if(nums[j]+j<=i+nums[i])skip[j]=true;
                 can[j]=true;
                 step++;
             }
