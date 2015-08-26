@@ -8,4 +8,27 @@ class RemoveDuplicatesII{
         }
         return nums.length==0?0:s;
     }
+    
+    
+    public ListNode deleteDuplicates(ListNode head) {
+        ListNode dummy = new ListNode(0);
+        ListNode h = dummy;
+        
+        while(head!=null){
+            ListNode p = head;
+            boolean append = true;
+            while(p.next !=null && p.next.val == p.val){
+                append = false;
+                p=p.next;
+            }
+            if(append){
+                h.next = p;
+                h=h.next;
+            }
+            head=p.next;
+        }
+        h.next = null;
+        return dummy.next;
+        
+    }
 }
