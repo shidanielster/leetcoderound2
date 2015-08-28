@@ -1,9 +1,7 @@
 import java.util.*;
 
 class RestoreIpAddresses{
-    public static void main(String [] args){
-        System.out.println(new RestoreIpAddresses().restoreIpAddresses("0000"));
-    }
+
     public List<String> restoreIpAddresses(String s) {
         List<String> list = new ArrayList<String> ();
         String[] ips = new String[4];
@@ -12,14 +10,11 @@ class RestoreIpAddresses{
     }
     
     private void help(String[] ips, int step,List<String> list, String s ){
-        System.out.println(step+":"+s);
         if(step == 4&&s.length()==0){
             list.add(ips[0]+"."+ips[1]+"."+ips[2]+"."+ips[3]);
             return;
         }
         if(s.length()< 4- step  || s.length() >(4-step) * 3){
-                    System.out.println(step+":"+s);
-
           return;  
         } 
         
@@ -33,7 +28,6 @@ class RestoreIpAddresses{
     }
     
     private boolean isValid(String s){
-        
         boolean valid;
         switch(s.length()){
             case 1:
@@ -51,6 +45,4 @@ class RestoreIpAddresses{
         }
         return valid;
     }
-
-
 }
